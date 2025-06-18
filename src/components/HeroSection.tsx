@@ -23,11 +23,11 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
           <div className="text-center max-w-6xl mx-auto">
             {/* Logo */}
             <div className="mb-12">
-              <div className="w-48 h-20 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 rounded-2xl mx-auto flex items-center justify-center shadow-2xl border border-cyan-300/30">
-                <div className="text-slate-900 font-black text-2xl tracking-wider">
-                  ELITE <span className="text-blue-800">CAPITAL</span>
-                </div>
-              </div>
+              <img 
+                src="/lovable-uploads/10e585cc-9b4c-4e11-b7ad-5d3f581227a4.png" 
+                alt="Elite Capital - Soluções Financeiras" 
+                className="h-24 md:h-32 mx-auto"
+              />
             </div>
 
             {/* Main headline */}

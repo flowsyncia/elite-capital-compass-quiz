@@ -1,17 +1,15 @@
 
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Clock, CheckCircle } from "lucide-react";
+import WhatsAppFormModal from './WhatsAppFormModal';
 
 interface FinalCTASectionProps {
   onStartQuiz: () => void;
 }
 
 const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
-  const handleWhatsAppClick = () => {
-    const message = "Olá Pedro! Acabei de ver o site e quero saber mais sobre as opções de crédito.";
-    const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, '_blank');
-  };
+  const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
 
   return (
     <section className="py-24 bg-slate-900 text-white">
@@ -34,7 +32,7 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
             </Button>
             
             <Button 
-              onClick={handleWhatsAppClick}
+              onClick={() => setShowWhatsAppModal(true)}
               variant="outline"
               className="border-2 border-cyan-400 bg-transparent text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-16 py-6 text-2xl font-bold rounded-lg transition-all duration-300"
             >
@@ -58,6 +56,11 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
           </div>
         </div>
       </div>
+
+      <WhatsAppFormModal 
+        isOpen={showWhatsAppModal}
+        onClose={() => setShowWhatsAppModal(false)}
+      />
     </section>
   );
 };

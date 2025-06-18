@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Clock, CheckCircle } from "lucide-react";
 
@@ -7,52 +8,52 @@ interface FinalCTASectionProps {
 
 const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
   const handleWhatsAppClick = () => {
-    const message = "Olá! Vim através do site da Elite Capital e gostaria de conhecer as opções de crédito disponíveis!";
+    const message = "Olá Pedro! Acabei de ver o site e quero saber mais sobre as opções de crédito.";
     const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-600 to-cyan-500 text-white">
+    <section className="py-24 bg-slate-900 text-white">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Descubra Sua Solução Ideal em <span className="text-cyan-200">2 Minutos</span>
+        <div className="text-center max-w-5xl mx-auto">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+            Está pronto para <span className="text-cyan-400">virar o jogo financeiro?</span>
           </h2>
           
-          <p className="text-xl md:text-2xl mb-12 leading-relaxed opacity-90">
-            Nosso quiz inteligente vai identificar exatamente qual produto se encaixa no seu perfil e necessidades. Receba uma proposta personalizada agora mesmo!
+          <p className="text-2xl md:text-3xl mb-16 leading-relaxed text-gray-300">
+            Preencha o formulário e receba sua análise personalizada ou fale direto conosco no WhatsApp!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center mb-16">
             <Button 
               onClick={onStartQuiz}
-              className="bg-white text-blue-600 hover:bg-gray-100 px-12 py-4 text-xl font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 px-16 py-6 text-2xl font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
-              FAZER MEU QUIZ PERSONALIZADO
+              FAZER MINHA ANÁLISE PERSONALIZADA
             </Button>
             
             <Button 
               onClick={handleWhatsAppClick}
               variant="outline"
-              className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-blue-600 px-12 py-4 text-xl font-semibold rounded-lg transition-all duration-300"
+              className="border-2 border-cyan-400 bg-transparent text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-16 py-6 text-2xl font-bold rounded-lg transition-all duration-300"
             >
-              FALAR DIRETO NO WHATSAPP
+              FALAR AGORA NO WHATSAPP
             </Button>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="flex items-center justify-center md:justify-start">
-              <Clock className="w-6 h-6 mr-3 text-cyan-200" />
-              <span className="font-medium">Apenas 2 minutos</span>
+              <Clock className="w-8 h-8 mr-4 text-cyan-400" />
+              <span className="font-bold text-xl">Análise Rápida</span>
             </div>
             <div className="flex items-center justify-center md:justify-start">
-              <CheckCircle className="w-6 h-6 mr-3 text-cyan-200" />
-              <span className="font-medium">100% Gratuito</span>
+              <CheckCircle className="w-8 h-8 mr-4 text-cyan-400" />
+              <span className="font-bold text-xl">100% Gratuito</span>
             </div>
             <div className="flex items-center justify-center md:justify-start">
-              <CheckCircle className="w-6 h-6 mr-3 text-cyan-200" />
-              <span className="font-medium">Proposta Personalizada</span>
+              <CheckCircle className="w-8 h-8 mr-4 text-cyan-400" />
+              <span className="font-bold text-xl">Atendimento Humano</span>
             </div>
           </div>
         </div>

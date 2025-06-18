@@ -32,11 +32,19 @@ const AuthoritySection = () => {
             <div className="mb-8">
               <h4 className="text-lg font-semibold text-slate-700 mb-4">Nossos Parceiros</h4>
               <div className="flex gap-6 justify-center lg:justify-start">
-                <div className="w-24 h-16 bg-slate-200 rounded-lg flex items-center justify-center">
-                  <span className="text-xs text-slate-600">Logo Banco 1</span>
+                <div className="w-32 h-20 bg-white rounded-lg flex items-center justify-center shadow-md border">
+                  <img 
+                    src="/lovable-uploads/35f772db-2585-4ba9-b244-04dc27b410b8.png" 
+                    alt="FRANQ - Membro Oficial" 
+                    className="max-w-full max-h-full object-contain"
+                  />
                 </div>
-                <div className="w-24 h-16 bg-slate-200 rounded-lg flex items-center justify-center">
-                  <span className="text-xs text-slate-600">Logo Banco 2</span>
+                <div className="w-32 h-20 bg-white rounded-lg flex items-center justify-center shadow-md border">
+                  <img 
+                    src="/lovable-uploads/2e77cbad-2407-4570-9c08-f744131ca797.png" 
+                    alt="SINFAC-SP" 
+                    className="max-w-full max-h-full object-contain"
+                  />
                 </div>
               </div>
             </div>

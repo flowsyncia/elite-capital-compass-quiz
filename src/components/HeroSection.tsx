@@ -21,10 +21,12 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
         
         <div className="container mx-auto px-4 py-12 relative z-10">
           <div className="text-center max-w-6xl mx-auto">
-            {/* Logo placeholder */}
+            {/* Logo */}
             <div className="mb-12">
-              <div className="w-32 h-16 bg-white/10 rounded-lg mx-auto flex items-center justify-center">
-                <span className="text-white font-bold text-lg">LOGO</span>
+              <div className="w-48 h-20 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 rounded-2xl mx-auto flex items-center justify-center shadow-2xl border border-cyan-300/30">
+                <div className="text-slate-900 font-black text-2xl tracking-wider">
+                  ELITE <span className="text-blue-800">CAPITAL</span>
+                </div>
               </div>
             </div>
 

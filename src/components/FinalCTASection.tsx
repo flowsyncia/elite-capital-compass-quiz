@@ -36,7 +36,7 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
             <Button 
               onClick={handleWhatsAppClick}
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-12 py-4 text-xl font-semibold rounded-lg transition-all duration-300"
+              className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-blue-600 px-12 py-4 text-xl font-semibold rounded-lg transition-all duration-300"
             >
               FALAR DIRETO NO WHATSAPP
             </Button>

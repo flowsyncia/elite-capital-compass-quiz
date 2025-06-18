@@ -22,13 +22,13 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-100">
+    <section className="py-24 bg-gray-100 font-poppins">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-8 tracking-tight">
             O que dizem <span className="text-cyan-600">nossos clientes</span>
           </h2>
-          <p className="text-2xl text-slate-700 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-700 max-w-4xl mx-auto font-medium">
             Histórias reais de quem já transformou sua vida financeira conosco
           </p>
         </div>
@@ -48,7 +48,7 @@ const TestimonialsSection = () => {
               
               {/* Quote */}
               <div className="mb-6">
-                <p className="text-slate-700 text-lg leading-relaxed italic">
+                <p className="text-slate-700 text-lg leading-relaxed italic font-medium">
                   "{testimonial.quote}"
                 </p>
               </div>

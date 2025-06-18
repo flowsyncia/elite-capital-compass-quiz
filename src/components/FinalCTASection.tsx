@@ -12,21 +12,21 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
 
   return (
-    <section className="py-24 bg-slate-900 text-white">
+    <section className="py-24 bg-slate-900 text-white font-poppins">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-5xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight">
             Está pronto para <span className="text-cyan-400">virar o jogo financeiro?</span>
           </h2>
           
-          <p className="text-2xl md:text-3xl mb-16 leading-relaxed text-gray-300">
+          <p className="text-xl md:text-2xl lg:text-3xl mb-16 leading-relaxed text-gray-300 font-medium">
             Preencha o formulário e receba sua análise personalizada ou fale direto conosco no WhatsApp!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-8 justify-center mb-16">
             <Button 
               onClick={onStartQuiz}
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 px-16 py-6 text-2xl font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 px-16 py-6 text-xl md:text-2xl font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               FAZER MINHA ANÁLISE PERSONALIZADA
             </Button>
@@ -34,7 +34,7 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
             <Button 
               onClick={() => setShowWhatsAppModal(true)}
               variant="outline"
-              className="border-2 border-cyan-400 bg-transparent text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-16 py-6 text-2xl font-bold rounded-lg transition-all duration-300"
+              className="border-2 border-cyan-400 bg-transparent text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-16 py-6 text-xl md:text-2xl font-bold rounded-lg transition-all duration-300"
             >
               FALAR AGORA NO WHATSAPP
             </Button>
@@ -43,15 +43,15 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="flex items-center justify-center md:justify-start">
               <Clock className="w-8 h-8 mr-4 text-cyan-400" />
-              <span className="font-bold text-xl">Análise Rápida</span>
+              <span className="font-semibold text-xl">Análise Rápida</span>
             </div>
             <div className="flex items-center justify-center md:justify-start">
               <CheckCircle className="w-8 h-8 mr-4 text-cyan-400" />
-              <span className="font-bold text-xl">100% Gratuito</span>
+              <span className="font-semibold text-xl">100% Gratuito</span>
             </div>
             <div className="flex items-center justify-center md:justify-start">
               <CheckCircle className="w-8 h-8 mr-4 text-cyan-400" />
-              <span className="font-bold text-xl">Atendimento Humano</span>
+              <span className="font-semibold text-xl">Atendimento Humano</span>
             </div>
           </div>
         </div>

@@ -3,10 +3,10 @@ import { Users, Calendar, Briefcase } from "lucide-react";
 
 const AuthoritySection = () => {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50 font-poppins">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-8 tracking-tight">
             Sobre <span className="text-cyan-600">Pedro Barbosa</span>
           </h2>
         </div>
@@ -24,7 +24,7 @@ const AuthoritySection = () => {
               <p className="text-cyan-600 font-bold text-xl">Fundador & CEO</p>
             </div>
 
-            <p className="text-xl text-slate-700 leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0 font-medium">
               "Com mais de uma década de atuação no mercado financeiro, a Elite Capital se consolidou como referência nacional em consultoria de crédito. Liderada por Pedro Barbosa, a empresa já impactou mais de 5.000 clientes com soluções estratégicas, mesmo em cenários desafiadores."
             </p>
 
@@ -56,33 +56,33 @@ const AuthoritySection = () => {
               <div className="flex items-center mb-6">
                 <Calendar className="w-16 h-16 text-cyan-600 mr-6" />
                 <div>
-                  <h3 className="text-4xl font-bold text-slate-900">10+</h3>
+                  <h3 className="text-4xl font-black text-slate-900">10+</h3>
                   <p className="text-slate-700 font-bold text-xl">Anos de Experiência</p>
                 </div>
               </div>
-              <p className="text-slate-600 text-lg">Uma década construindo relacionamentos sólidos no mercado financeiro.</p>
+              <p className="text-slate-600 text-lg font-medium">Uma década construindo relacionamentos sólidos no mercado financeiro.</p>
             </div>
 
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-10 rounded-2xl shadow-lg border border-green-100">
               <div className="flex items-center mb-6">
                 <Users className="w-16 h-16 text-green-600 mr-6" />
                 <div>
-                  <h3 className="text-4xl font-bold text-slate-900">5.000+</h3>
+                  <h3 className="text-4xl font-black text-slate-900">5.000+</h3>
                   <p className="text-slate-700 font-bold text-xl">Clientes Atendidos</p>
                 </div>
               </div>
-              <p className="text-slate-600 text-lg">Milhares de brasileiros já conquistaram seus objetivos conosco.</p>
+              <p className="text-slate-600 text-lg font-medium">Milhares de brasileiros já conquistaram seus objetivos conosco.</p>
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-10 rounded-2xl shadow-lg border border-blue-100">
               <div className="flex items-center mb-6">
                 <Briefcase className="w-16 h-16 text-blue-600 mr-6" />
                 <div>
-                  <h3 className="text-4xl font-bold text-slate-900">50+</h3>
+                  <h3 className="text-4xl font-black text-slate-900">50+</h3>
                   <p className="text-slate-700 font-bold text-xl">Parcerias Estratégicas</p>
                 </div>
               </div>
-              <p className="text-slate-600 text-lg">Rede robusta com as principais instituições financeiras do país.</p>
+              <p className="text-slate-600 text-lg font-medium">Rede robusta com as principais instituições financeiras do país.</p>
             </div>
           </div>
         </div>

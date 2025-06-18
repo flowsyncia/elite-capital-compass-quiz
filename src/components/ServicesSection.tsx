@@ -32,13 +32,13 @@ const ServicesSection = ({ onStartQuiz }: ServicesSectionProps) => {
   ];
 
   return (
-    <section className="py-24 bg-slate-900 text-white">
+    <section className="py-24 bg-slate-900 text-white font-poppins">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight">
             Soluções que se <span className="text-cyan-400">encaixam no seu perfil</span>
           </h2>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-medium">
             Oferecemos uma gama completa de produtos financeiros para atender suas necessidades específicas
           </p>
         </div>
@@ -55,7 +55,7 @@ const ServicesSection = ({ onStartQuiz }: ServicesSectionProps) => {
               <h3 className="text-xl font-bold text-white mb-3">
                 {service.title}
               </h3>
-              <p className="text-gray-400">
+              <p className="text-gray-400 font-medium">
                 Condições especiais e atendimento personalizado
               </p>
             </div>
@@ -65,7 +65,7 @@ const ServicesSection = ({ onStartQuiz }: ServicesSectionProps) => {
         <div className="text-center">
           <Button 
             onClick={onStartQuiz}
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-16 py-6 text-2xl font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-16 py-6 text-xl md:text-2xl font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             QUERO DESCOBRIR QUAL É IDEAL PARA MIM
           </Button>

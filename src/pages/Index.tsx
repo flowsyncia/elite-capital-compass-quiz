@@ -1,12 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from 'react';
+import HeroSection from '../components/HeroSection';
+import AuthoritySection from '../components/AuthoritySection';
+import ServicesSection from '../components/ServicesSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import FinalCTASection from '../components/FinalCTASection';
+import Quiz from '../components/Quiz';
 
 const Index = () => {
+  const [showQuiz, setShowQuiz] = useState(false);
+
+  const handleStartQuiz = () => {
+    setShowQuiz(true);
+  };
+
+  const handleCloseQuiz = () => {
+    setShowQuiz(false);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-white">
+      <HeroSection onStartQuiz={handleStartQuiz} />
+      <AuthoritySection />
+      <ServicesSection onStartQuiz={handleStartQuiz} />
+      <TestimonialsSection />
+      <FinalCTASection onStartQuiz={handleStartQuiz} />
+      
+      {showQuiz && <Quiz onClose={handleCloseQuiz} />}
     </div>
   );
 };

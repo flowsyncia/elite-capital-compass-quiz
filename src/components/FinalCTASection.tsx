@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Clock, CheckCircle } from "lucide-react";
 
@@ -9,7 +8,7 @@ interface FinalCTASectionProps {
 const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
   const handleWhatsAppClick = () => {
     const message = "Olá! Vim através do site da Elite Capital e gostaria de conhecer as opções de crédito disponíveis!";
-    const whatsappURL = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
   };
 

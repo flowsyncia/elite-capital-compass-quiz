@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -116,7 +115,7 @@ Minhas respostas:
 
 Aguardo retorno!`;
 
-    const whatsappURL = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappURL, '_blank');
     onClose();
   };

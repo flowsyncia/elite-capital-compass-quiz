@@ -11,12 +11,6 @@ interface FinalCTASectionProps {
 const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
 
-  const handleDirectWhatsApp = () => {
-    const message = `Olá! Vi o site da Elite Capital e gostaria de falar sobre minhas necessidades de crédito.`;
-    const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, '_blank');
-  };
-
   return (
     <section className="py-24 bg-slate-900 text-white font-poppins">
       <div className="container mx-auto px-4">
@@ -38,7 +32,7 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
             </Button>
             
             <Button 
-              onClick={handleDirectWhatsApp}
+              onClick={() => setShowWhatsAppModal(true)}
               variant="outline"
               className="border-2 border-cyan-400 bg-transparent text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-16 py-6 text-xl md:text-2xl font-bold rounded-lg transition-all duration-300"
             >

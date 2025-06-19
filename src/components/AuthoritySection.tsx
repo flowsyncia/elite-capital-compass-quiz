@@ -16,9 +16,11 @@ const AuthoritySection = () => {
           <div className="text-center lg:text-left">
             <div className="mb-12">
               <div className="w-64 h-64 mx-auto lg:mx-0 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mb-8 shadow-lg">
-                <div className="w-56 h-56 bg-slate-300 rounded-full flex items-center justify-center">
-                  <span className="text-slate-600 font-medium text-lg">Foto Pedro Barbosa</span>
-                </div>
+                <img 
+                  src="/lovable-uploads/0d8097a1-f23f-4fa5-8db8-8acaf431acfd.png" 
+                  alt="Pedro Barbosa - Fundador & CEO da Elite Capital" 
+                  className="w-56 h-56 rounded-full object-cover"
+                />
               </div>
               <h3 className="text-3xl font-bold text-slate-900 mb-3">Pedro Barbosa</h3>
               <p className="text-cyan-600 font-bold text-xl">Fundador & CEO</p>

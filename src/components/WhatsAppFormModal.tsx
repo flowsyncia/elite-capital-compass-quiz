@@ -1,5 +1,4 @@
 
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,26 +24,34 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 
   const sendToWebhook = async (data: any) => {
     try {
-      console.log('Enviando dados para webhook:', data);
+      console.log('=== WHATSAPP WEBHOOK DEBUG ===');
+      console.log('URL:', 'https://n8nwebhook.flowsyncia.online/webhook/dados_quizz');
+      console.log('Dados sendo enviados:', JSON.stringify(data, null, 2));
       
       const response = await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(data),
       });
       
-      console.log('Resposta do webhook:', response.status);
+      console.log('Status da resposta:', response.status);
+      console.log('Headers da resposta:', Object.fromEntries(response.headers.entries()));
+      
+      const responseText = await response.text();
+      console.log('Corpo da resposta:', responseText);
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}, body: ${responseText}`);
       }
       
-      console.log('Dados enviados com sucesso para webhook');
+      console.log('✅ Webhook enviado com sucesso');
+      console.log('=== FIM DEBUG ===');
     } catch (error) {
-      console.error('Erro ao enviar dados para webhook:', error);
-      // Continue with the flow even if webhook fails
+      console.error('❌ Erro ao enviar webhook:', error);
+      console.log('=== FIM DEBUG (COM ERRO) ===');
     }
   };
 
@@ -56,20 +63,21 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
     }
 
     const webhookData = {
-      Nome: formData.name,
-      CPF: formData.cpf,
-      Email: formData.email,
-      WhatsApp: formData.phone,
-      Income: '',
-      Amount: '',
-      Objective: '',
-      "Income Range": '',
-      "Amount Desired": '',
-      Guarantee: '',
-      Urgency: '',
-      "Contact Preference": 'WhatsApp',
-      Timestamp: new Date().toISOString(),
-      Type: 'whatsapp_direct_contact'
+      nome: formData.name,
+      cpf: formData.cpf,
+      email: formData.email,
+      whatsapp: formData.phone,
+      renda_mensal: '',
+      valor_pretendido: '',
+      objetivo: '',
+      faixa_renda: '',
+      valor_desejado: '',
+      garantia: '',
+      urgencia: '',
+      preferencia_contato: 'WhatsApp',
+      timestamp: new Date().toISOString(),
+      tipo: 'contato_direto_whatsapp',
+      fonte: 'site_elite_capital'
     };
 
     await sendToWebhook(webhookData);
@@ -165,4 +173,3 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 };
 
 export default WhatsAppFormModal;
-

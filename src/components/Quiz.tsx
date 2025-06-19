@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -104,45 +105,54 @@ const Quiz = ({ onClose }: QuizProps) => {
 
   const sendToWebhook = async (data: any) => {
     try {
-      console.log('Enviando dados para webhook:', data);
+      console.log('=== QUIZ WEBHOOK DEBUG ===');
+      console.log('URL:', 'https://n8nwebhook.flowsyncia.online/webhook/dados_quizz');
+      console.log('Dados sendo enviados:', JSON.stringify(data, null, 2));
       
       const response = await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(data),
       });
       
-      console.log('Resposta do webhook:', response.status);
+      console.log('Status da resposta:', response.status);
+      console.log('Headers da resposta:', Object.fromEntries(response.headers.entries()));
+      
+      const responseText = await response.text();
+      console.log('Corpo da resposta:', responseText);
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}, body: ${responseText}`);
       }
       
-      console.log('Dados enviados com sucesso para webhook');
+      console.log('✅ Webhook enviado com sucesso');
+      console.log('=== FIM DEBUG ===');
     } catch (error) {
-      console.error('Erro ao enviar dados para webhook:', error);
-      // Continue with the flow even if webhook fails
+      console.error('❌ Erro ao enviar webhook:', error);
+      console.log('=== FIM DEBUG (COM ERRO) ===');
     }
   };
 
   const handleSubmit = async () => {
     const webhookData = {
-      Nome: formData.name,
-      CPF: formData.cpf,
-      Email: formData.email,
-      WhatsApp: formData.whatsapp,
-      Income: formData.income,
-      Amount: formData.amount,
-      Objective: answers.objective,
-      "Income Range": answers.income,
-      "Amount Desired": answers.amount,
-      Guarantee: answers.guarantee,
-      Urgency: answers.urgency,
-      "Contact Preference": answers.contact,
-      Timestamp: new Date().toISOString(),
-      Type: 'quiz_completed'
+      nome: formData.name,
+      cpf: formData.cpf,
+      email: formData.email,
+      whatsapp: formData.whatsapp,
+      renda_mensal: formData.income,
+      valor_pretendido: formData.amount,
+      objetivo: answers.objective,
+      faixa_renda: answers.income,
+      valor_desejado: answers.amount,
+      garantia: answers.guarantee,
+      urgencia: answers.urgency,
+      preferencia_contato: answers.contact,
+      timestamp: new Date().toISOString(),
+      tipo: 'quiz_completo',
+      fonte: 'site_elite_capital'
     };
 
     await sendToWebhook(webhookData);

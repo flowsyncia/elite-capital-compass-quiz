@@ -156,17 +156,7 @@ const Quiz = ({ onClose }: QuizProps) => {
 
     await sendToWebhook(webhookData);
 
-    const whatsappMessage = `Olá! Completei o quiz no site. Meu nome é ${formData.name} e meu CPF é ${formData.cpf}. Gostaria de receber minha proposta personalizada!
-
-Minhas respostas:
-- Objetivo: ${answers.objective}
-- Renda: ${answers.income}
-- Valor desejado: ${answers.amount}
-- Garantia: ${answers.guarantee}
-- Urgência: ${answers.urgency}
-- Preferência de contato: ${answers.contact}
-
-Aguardo retorno!`;
+    const whatsappMessage = `Olá Pedro! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. Meu CPF/CNPJ é: ${formData.cpf}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
 
     const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappURL, '_blank');

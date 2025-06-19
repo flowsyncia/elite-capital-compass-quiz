@@ -134,7 +134,7 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 
     await sendToWebhook(webhookData);
 
-    const message = `Olá Pedro! Meu nome é ${formData.name}, CPF ${formData.cpf}. Acabei de ver o site e quero saber mais sobre as opções de crédito.`;
+    const message = `Olá Pedro! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. Meu CPF/CNPJ é: ${formData.cpf}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
     const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
     onClose();

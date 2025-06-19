@@ -106,7 +106,7 @@ const Quiz = ({ onClose }: QuizProps) => {
 
   const sendToWebhook = async (data: any) => {
     try {
-      await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
+      await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -106,10 +105,10 @@ const Quiz = ({ onClose }: QuizProps) => {
   const sendToWebhook = async (data: any) => {
     try {
       console.log('=== QUIZ WEBHOOK DEBUG ===');
-      console.log('URL:', 'https://n8nwebhook.flowsyncia.online/webhook/dados_quizz');
+      console.log('URL:', 'https://n8neditor.flowsyncia.online/webhook-test/dados_quizz');
       console.log('Dados sendo enviados:', JSON.stringify(data, null, 2));
       
-      const response = await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
+      const response = await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

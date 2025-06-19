@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -121,24 +122,20 @@ const Quiz = ({ onClose }: QuizProps) => {
 
   const handleSubmit = async () => {
     const webhookData = {
-      type: 'quiz_completed',
-      timestamp: new Date().toISOString(),
-      personal_data: {
-        name: formData.name,
-        cpf: formData.cpf,
-        email: formData.email,
-        whatsapp: formData.whatsapp,
-        income: formData.income,
-        amount: formData.amount
-      },
-      quiz_answers: {
-        objective: answers.objective,
-        income_range: answers.income,
-        amount_desired: answers.amount,
-        guarantee: answers.guarantee,
-        urgency: answers.urgency,
-        contact_preference: answers.contact
-      }
+      Nome: formData.name,
+      CPF: formData.cpf,
+      Email: formData.email,
+      WhatsApp: formData.whatsapp,
+      Income: formData.income,
+      Amount: formData.amount,
+      Objective: answers.objective,
+      "Income Range": answers.income,
+      "Amount Desired": answers.amount,
+      Guarantee: answers.guarantee,
+      Urgency: answers.urgency,
+      "Contact Preference": answers.contact,
+      Timestamp: new Date().toISOString(),
+      Type: 'quiz_completed'
     };
 
     await sendToWebhook(webhookData);
@@ -303,3 +300,4 @@ Aguardo retorno!`;
 };
 
 export default Quiz;
+

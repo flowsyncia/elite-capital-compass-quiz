@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -46,15 +47,20 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
     }
 
     const webhookData = {
-      type: 'whatsapp_direct_contact',
-      timestamp: new Date().toISOString(),
-      personal_data: {
-        name: formData.name,
-        cpf: formData.cpf,
-        email: formData.email,
-        phone: formData.phone
-      },
-      source: 'whatsapp_modal'
+      Nome: formData.name,
+      CPF: formData.cpf,
+      Email: formData.email,
+      WhatsApp: formData.phone,
+      Income: '',
+      Amount: '',
+      Objective: '',
+      "Income Range": '',
+      "Amount Desired": '',
+      Guarantee: '',
+      Urgency: '',
+      "Contact Preference": 'WhatsApp',
+      Timestamp: new Date().toISOString(),
+      Type: 'whatsapp_direct_contact'
     };
 
     await sendToWebhook(webhookData);
@@ -150,3 +156,4 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 };
 
 export default WhatsAppFormModal;
+

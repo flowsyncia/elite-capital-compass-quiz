@@ -25,17 +25,26 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 
   const sendToWebhook = async (data: any) => {
     try {
-      await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
+      console.log('Enviando dados para webhook:', data);
+      
+      const response = await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        mode: 'no-cors',
         body: JSON.stringify(data),
       });
-      console.log('Dados enviados para webhook:', data);
+      
+      console.log('Resposta do webhook:', response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      console.log('Dados enviados com sucesso para webhook');
     } catch (error) {
       console.error('Erro ao enviar dados para webhook:', error);
+      // Continue with the flow even if webhook fails
     }
   };
 

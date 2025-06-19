@@ -11,6 +11,12 @@ interface HeroSectionProps {
 const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
   const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
 
+  const handleDirectWhatsApp = () => {
+    const message = `Olá! Vi o site da Elite Capital e gostaria de saber mais sobre as opções de crédito disponíveis.`;
+    const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   return (
     <>
       <section className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden font-poppins">
@@ -56,7 +62,7 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
               </Button>
               
               <Button 
-                onClick={() => setShowWhatsAppModal(true)}
+                onClick={handleDirectWhatsApp}
                 variant="outline"
                 className="border-2 border-cyan-400 bg-transparent text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-12 py-6 text-lg md:text-xl font-bold rounded-xl transition-all duration-300"
               >

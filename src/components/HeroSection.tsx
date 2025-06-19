@@ -24,7 +24,7 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
             {/* Logo */}
             <div className="mb-12">
               <img 
-                src="/lovable-uploads/10e585cc-9b4c-4e11-b7ad-5d3f581227a4.png" 
+                src="/lovable-uploads/bf334ad0-2034-4cab-b691-71558bb72ff5.png" 
                 alt="Elite Capital - Soluções Financeiras" 
                 className="h-24 md:h-32 mx-auto"
               />

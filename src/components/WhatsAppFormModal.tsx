@@ -22,12 +22,42 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
     setFormData({ ...formData, [field]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendToWebhook = async (data: any) => {
+    try {
+      await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors',
+        body: JSON.stringify(data),
+      });
+      console.log('Dados enviados para webhook:', data);
+    } catch (error) {
+      console.error('Erro ao enviar dados para webhook:', error);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.cpf || !formData.email || !formData.phone) {
       return;
     }
+
+    const webhookData = {
+      type: 'whatsapp_direct_contact',
+      timestamp: new Date().toISOString(),
+      personal_data: {
+        name: formData.name,
+        cpf: formData.cpf,
+        email: formData.email,
+        phone: formData.phone
+      },
+      source: 'whatsapp_modal'
+    };
+
+    await sendToWebhook(webhookData);
 
     const message = `Olá Pedro! Meu nome é ${formData.name}, CPF ${formData.cpf}. Acabei de ver o site e quero saber mais sobre as opções de crédito.`;
     const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(message)}`;

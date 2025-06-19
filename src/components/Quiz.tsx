@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -102,7 +103,46 @@ const Quiz = ({ onClose }: QuizProps) => {
     setFormData({ ...formData, [field]: value });
   };
 
-  const handleSubmit = () => {
+  const sendToWebhook = async (data: any) => {
+    try {
+      await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors',
+        body: JSON.stringify(data),
+      });
+      console.log('Dados enviados para webhook:', data);
+    } catch (error) {
+      console.error('Erro ao enviar dados para webhook:', error);
+    }
+  };
+
+  const handleSubmit = async () => {
+    const webhookData = {
+      type: 'quiz_completed',
+      timestamp: new Date().toISOString(),
+      personal_data: {
+        name: formData.name,
+        cpf: formData.cpf,
+        email: formData.email,
+        whatsapp: formData.whatsapp,
+        income: formData.income,
+        amount: formData.amount
+      },
+      quiz_answers: {
+        objective: answers.objective,
+        income_range: answers.income,
+        amount_desired: answers.amount,
+        guarantee: answers.guarantee,
+        urgency: answers.urgency,
+        contact_preference: answers.contact
+      }
+    };
+
+    await sendToWebhook(webhookData);
+
     const whatsappMessage = `Olá! Completei o quiz no site. Meu nome é ${formData.name} e meu CPF é ${formData.cpf}. Gostaria de receber minha proposta personalizada!
 
 Minhas respostas:

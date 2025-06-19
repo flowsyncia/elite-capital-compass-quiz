@@ -3,11 +3,11 @@ import { Users, Calendar, Briefcase } from "lucide-react";
 
 const AuthoritySection = () => {
   return (
-    <section className="py-24 bg-gray-50 font-poppins">
+    <section className="py-24 bg-slate-900 text-white font-poppins">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-8 tracking-tight">
-            Sobre <span className="text-cyan-600">Pedro Barbosa</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight">
+            Sobre <span className="text-cyan-400">Pedro Barbosa</span>
           </h2>
         </div>
 
@@ -22,17 +22,17 @@ const AuthoritySection = () => {
                   className="w-56 h-56 rounded-full object-cover"
                 />
               </div>
-              <h3 className="text-3xl font-bold text-slate-900 mb-3">Pedro Barbosa</h3>
-              <p className="text-cyan-600 font-bold text-xl">Fundador & CEO</p>
+              <h3 className="text-3xl font-bold mb-3">Pedro Barbosa</h3>
+              <p className="text-cyan-400 font-bold text-xl">Fundador & CEO</p>
             </div>
 
-            <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0 font-medium">
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0 font-medium">
               "Com mais de uma década de atuação no mercado financeiro, a Elite Capital se consolidou como referência nacional em consultoria de crédito. Liderada por Pedro Barbosa, a empresa já impactou mais de 5.000 clientes com soluções estratégicas, mesmo em cenários desafiadores."
             </p>
 
             {/* Logos dos Parceiros */}
             <div className="mb-12">
-              <h4 className="text-2xl font-bold text-slate-800 mb-6">Nossos Parceiros</h4>
+              <h4 className="text-2xl font-bold text-gray-200 mb-6">Nossos Parceiros</h4>
               <div className="flex gap-8 justify-center lg:justify-start">
                 <div className="w-40 h-24 bg-white rounded-xl flex items-center justify-center shadow-lg border-2 border-gray-200">
                   <img 

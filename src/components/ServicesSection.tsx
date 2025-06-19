@@ -32,13 +32,13 @@ const ServicesSection = ({ onStartQuiz }: ServicesSectionProps) => {
   ];
 
   return (
-    <section className="py-24 bg-slate-900 text-white font-poppins">
+    <section className="py-24 bg-gray-50 font-poppins">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight">
-            Soluções que se <span className="text-cyan-400">encaixam no seu perfil</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-8 tracking-tight">
+            Soluções que se <span className="text-cyan-600">encaixam no seu perfil</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-medium">
+          <p className="text-xl md:text-2xl text-slate-700 max-w-4xl mx-auto font-medium">
             Oferecemos uma gama completa de produtos financeiros para atender suas necessidades específicas
           </p>
         </div>
@@ -47,15 +47,15 @@ const ServicesSection = ({ onStartQuiz }: ServicesSectionProps) => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="bg-slate-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group border border-slate-700"
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group border border-gray-200"
             >
               <div className={`w-20 h-20 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 <service.icon className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">
                 {service.title}
               </h3>
-              <p className="text-gray-400 font-medium">
+              <p className="text-slate-600 font-medium">
                 Condições especiais e atendimento personalizado
               </p>
             </div>

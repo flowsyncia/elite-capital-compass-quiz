@@ -22,13 +22,13 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-100 font-poppins">
+    <section className="py-24 bg-slate-900 text-white font-poppins">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-8 tracking-tight">
-            O que dizem <span className="text-cyan-600">nossos clientes</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight">
+            O que dizem <span className="text-cyan-400">nossos clientes</span>
           </h2>
-          <p className="text-xl md:text-2xl text-slate-700 max-w-4xl mx-auto font-medium">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-medium">
             Histórias reais de quem já transformou sua vida financeira conosco
           </p>
         </div>
@@ -37,27 +37,27 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-200"
+              className="bg-slate-800 p-10 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-slate-700"
             >
               {/* Placeholder para imagem do depoimento */}
-              <div className="w-full h-56 bg-slate-200 rounded-xl flex items-center justify-center mb-8">
-                <span className="text-slate-600 font-medium text-center text-lg">
+              <div className="w-full h-56 bg-slate-700 rounded-xl flex items-center justify-center mb-8">
+                <span className="text-slate-300 font-medium text-center text-lg">
                   {testimonial.placeholder}
                 </span>
               </div>
               
               {/* Quote */}
               <div className="mb-6">
-                <p className="text-slate-700 text-lg leading-relaxed italic font-medium">
+                <p className="text-gray-300 text-lg leading-relaxed italic font-medium">
                   "{testimonial.quote}"
                 </p>
               </div>
               
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+              <h3 className="text-2xl font-bold text-white mb-2">
                 {testimonial.name}
               </h3>
               
-              <p className="text-cyan-600 font-semibold mb-4">
+              <p className="text-cyan-400 font-semibold mb-4">
                 {testimonial.result}
               </p>
               

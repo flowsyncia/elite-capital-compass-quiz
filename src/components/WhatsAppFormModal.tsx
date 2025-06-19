@@ -42,10 +42,10 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 
     try {
       console.log('=== TESTE WEBHOOK ===');
-      console.log('URL:', 'https://n8neditor.flowsyncia.online/webhook-test/dados_quizz');
+      console.log('URL:', 'https://n8nwebhook.flowsyncia.online/webhook/dados_quizz');
       console.log('Dados de teste sendo enviados:', JSON.stringify(testData, null, 2));
       
-      const response = await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
+      const response = await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,10 +77,10 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
   const sendToWebhook = async (data: any) => {
     try {
       console.log('=== WHATSAPP WEBHOOK DEBUG ===');
-      console.log('URL:', 'https://n8neditor.flowsyncia.online/webhook-test/dados_quizz');
+      console.log('URL:', 'https://n8nwebhook.flowsyncia.online/webhook/dados_quizz');
       console.log('Dados sendo enviados:', JSON.stringify(data, null, 2));
       
-      const response = await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
+      const response = await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

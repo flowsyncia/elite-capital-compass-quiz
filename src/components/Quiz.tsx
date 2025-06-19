@@ -19,6 +19,7 @@ const Quiz = ({ onClose }: QuizProps) => {
     income: '',
     amount: ''
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const questions = [
     {
@@ -88,18 +89,98 @@ const Quiz = ({ onClose }: QuizProps) => {
     }
   ];
 
+  const validateName = (name: string) => {
+    if (name.length < 3) return 'Nome deve ter pelo menos 3 caracteres';
+    return '';
+  };
+
+  const validateCPF = (cpf: string) => {
+    const numbers = cpf.replace(/\D/g, '');
+    if (numbers.length !== 11 && numbers.length !== 14) {
+      return 'CPF deve ter 11 dígitos ou CNPJ deve ter 14 dígitos';
+    }
+    return '';
+  };
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return 'Email deve ter formato válido';
+    return '';
+  };
+
+  const validateWhatsApp = (phone: string) => {
+    const numbers = phone.replace(/\D/g, '');
+    if (numbers.length < 10 || numbers.length > 11) {
+      return 'WhatsApp deve ter DDD + número (10 ou 11 dígitos)';
+    }
+    return '';
+  };
+
+  const formatCurrency = (value: string) => {
+    const numbers = value.replace(/\D/g, '');
+    if (!numbers) return '';
+    
+    const amount = parseFloat(numbers) / 100;
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(amount);
+  };
+
   const handleAnswerSelect = (answer: string) => {
     setAnswers({ ...answers, [questions[currentStep].id]: answer });
     
     if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      setCurrentStep(questions.length); // Vai para o formulário
+      setCurrentStep(questions.length);
     }
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData({ ...formData, [field]: value });
+    let formattedValue = value;
+    
+    if (field === 'cpf') {
+      const numbers = value.replace(/\D/g, '');
+      if (numbers.length <= 11) {
+        formattedValue = numbers.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+      } else {
+        formattedValue = numbers.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+      }
+    } else if (field === 'whatsapp') {
+      const numbers = value.replace(/\D/g, '');
+      if (numbers.length <= 11) {
+        formattedValue = numbers.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3');
+      }
+    } else if (field === 'income' || field === 'amount') {
+      formattedValue = formatCurrency(value);
+    }
+
+    setFormData({ ...formData, [field]: formattedValue });
+    
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors({ ...errors, [field]: '' });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    
+    const nameError = validateName(formData.name);
+    if (nameError) newErrors.name = nameError;
+    
+    const cpfError = validateCPF(formData.cpf);
+    if (cpfError) newErrors.cpf = cpfError;
+    
+    const emailError = validateEmail(formData.email);
+    if (emailError) newErrors.email = emailError;
+    
+    const whatsappError = validateWhatsApp(formData.whatsapp);
+    if (whatsappError) newErrors.whatsapp = whatsappError;
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const sendToWebhook = async (data: any) => {
@@ -136,6 +217,10 @@ const Quiz = ({ onClose }: QuizProps) => {
   };
 
   const handleSubmit = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
     const webhookData = {
       nome: formData.name,
       cpf: formData.cpf,
@@ -229,8 +314,9 @@ const Quiz = ({ onClose }: QuizProps) => {
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     placeholder="Seu nome completo"
-                    className="mt-1"
+                    className={`mt-1 ${errors.name ? 'border-red-500' : ''}`}
                   />
+                  {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                 </div>
 
                 <div>
@@ -239,9 +325,10 @@ const Quiz = ({ onClose }: QuizProps) => {
                     id="cpf"
                     value={formData.cpf}
                     onChange={(e) => handleInputChange('cpf', e.target.value)}
-                    placeholder="000.000.000-00"
-                    className="mt-1"
+                    placeholder="000.000.000-00 ou 00.000.000/0000-00"
+                    className={`mt-1 ${errors.cpf ? 'border-red-500' : ''}`}
                   />
+                  {errors.cpf && <p className="text-red-500 text-sm mt-1">{errors.cpf}</p>}
                 </div>
 
                 <div>
@@ -252,8 +339,9 @@ const Quiz = ({ onClose }: QuizProps) => {
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="seu.email@exemplo.com"
-                    className="mt-1"
+                    className={`mt-1 ${errors.email ? 'border-red-500' : ''}`}
                   />
+                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
@@ -263,8 +351,9 @@ const Quiz = ({ onClose }: QuizProps) => {
                     value={formData.whatsapp}
                     onChange={(e) => handleInputChange('whatsapp', e.target.value)}
                     placeholder="(11) 99999-9999"
-                    className="mt-1"
+                    className={`mt-1 ${errors.whatsapp ? 'border-red-500' : ''}`}
                   />
+                  {errors.whatsapp && <p className="text-red-500 text-sm mt-1">{errors.whatsapp}</p>}
                 </div>
 
                 <div>

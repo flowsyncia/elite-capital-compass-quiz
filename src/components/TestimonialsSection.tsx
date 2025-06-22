@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { 
   Carousel,
@@ -82,9 +81,9 @@ const TestimonialsSection = () => {
           </Carousel>
         </div>
 
-        {/* Mobile: 1 column with arrows positioned outside */}
+        {/* Mobile: 1 column with arrows positioned at extreme edges */}
         <div className="md:hidden relative">
-          <div className="px-12">
+          <div className="px-8">
             <Carousel
               opts={{
                 align: "center",
@@ -99,8 +98,8 @@ const TestimonialsSection = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute -left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
-              <CarouselNext className="absolute -right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
+              <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
+              <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
             </Carousel>
           </div>
         </div>

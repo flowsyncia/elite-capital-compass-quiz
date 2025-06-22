@@ -62,7 +62,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Desktop: 3 columns */}
-        <div className="hidden md:block max-w-7xl mx-auto">
+        <div className="hidden md:block max-w-7xl mx-auto relative">
           <Carousel
             opts={{
               align: "start",
@@ -77,13 +77,13 @@ const TestimonialsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white" />
-            <CarouselNext className="hidden md:flex -right-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white" />
+            <CarouselPrevious className="absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
+            <CarouselNext className="absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
           </Carousel>
         </div>
 
         {/* Mobile: 1 column */}
-        <div className="md:hidden max-w-sm mx-auto">
+        <div className="md:hidden max-w-sm mx-auto relative">
           <Carousel
             opts={{
               align: "center",
@@ -98,8 +98,8 @@ const TestimonialsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-2 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white" />
-            <CarouselNext className="right-2 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white" />
+            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
+            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
           </Carousel>
         </div>
       </div>

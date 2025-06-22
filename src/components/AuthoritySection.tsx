@@ -85,6 +85,43 @@ const AuthoritySection = () => {
                 </div>
               </div>
               <p className="text-slate-600 text-lg font-medium">Rede robusta com as principais instituições financeiras do país.</p>
+              
+              {/* Strategic Partnerships Logos Section */}
+              <div className="mt-8 pt-8 border-t border-blue-200">
+                <p className="text-slate-600 text-sm font-medium mb-6">
+                  Conectados às melhores oportunidades de crédito do mercado, incluindo produtos de grandes bancos e fintechs parceiros.
+                </p>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-lg">Itaú</span>
+                  </div>
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-lg">Bradesco</span>
+                  </div>
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-lg">Santander</span>
+                  </div>
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-lg">Inter</span>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-lg">C6 Bank</span>
+                  </div>
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-lg">Bari</span>
+                  </div>
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-lg">ABC Brasil</span>
+                  </div>
+                  <div className="bg-white p-3 rounded-lg flex items-center justify-center h-16 shadow-sm border border-gray-200">
+                    <span className="text-gray-400 font-bold text-sm">...e muitas outras</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

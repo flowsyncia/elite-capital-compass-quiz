@@ -62,7 +62,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Desktop: 3 columns */}
-        <div className="hidden md:block max-w-7xl mx-auto relative">
+        <div className="hidden md:block max-w-7xl mx-auto relative px-16">
           <Carousel
             opts={{
               align: "start",
@@ -77,30 +77,32 @@ const TestimonialsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute -left-12 lg:-left-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
-            <CarouselNext className="absolute -right-12 lg:-right-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
+            <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
+            <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
           </Carousel>
         </div>
 
-        {/* Mobile: 1 column with improved navigation */}
-        <div className="md:hidden max-w-sm mx-auto relative">
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="basis-full">
-                  <TestimonialCard testimonial={testimonial} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
-          </Carousel>
+        {/* Mobile: 1 column with arrows positioned outside */}
+        <div className="md:hidden relative">
+          <div className="px-12">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index} className="basis-full">
+                    <TestimonialCard testimonial={testimonial} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute -left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
+              <CarouselNext className="absolute -right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
+            </Carousel>
+          </div>
         </div>
       </div>
     </section>
@@ -109,7 +111,7 @@ const TestimonialsSection = () => {
 
 const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
   return (
-    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-100 h-full mx-2 sm:mx-0">
+    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-100 h-full">
       {/* Avatar e nome */}
       <div className="flex items-center mb-6">
         <Avatar className="w-12 h-12 sm:w-16 sm:h-16 mr-3 sm:mr-4 flex-shrink-0">

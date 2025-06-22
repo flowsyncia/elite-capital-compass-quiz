@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -249,23 +250,23 @@ const Quiz = ({ onClose }: QuizProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b border-gray-200 flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-slate-800">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[95vh] overflow-y-auto mx-2 sm:mx-4">
+        <div className="p-4 sm:p-6 border-b border-gray-200 flex justify-between items-center">
+          <h2 className="text-lg sm:text-2xl font-bold text-slate-800">
             Quiz Personalizado - Elite Capital
           </h2>
           <Button
             onClick={onClose}
             variant="ghost"
             size="sm"
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-500 hover:text-gray-700 flex-shrink-0 ml-2"
           >
             <X className="w-5 h-5" />
           </Button>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {currentStep < questions.length ? (
             // Perguntas do Quiz
             <div>
@@ -274,14 +275,14 @@ const Quiz = ({ onClose }: QuizProps) => {
                   <span className="text-sm font-medium text-blue-600">
                     Pergunta {currentStep + 1} de {questions.length}
                   </span>
-                  <div className="w-32 bg-gray-200 rounded-full h-2">
+                  <div className="w-24 sm:w-32 bg-gray-200 rounded-full h-2">
                     <div 
                       className="bg-gradient-to-r from-blue-600 to-cyan-500 h-2 rounded-full transition-all duration-300"
                       style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
                     ></div>
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-6 leading-tight">
                   {questions[currentStep].question}
                 </h3>
               </div>
@@ -292,7 +293,7 @@ const Quiz = ({ onClose }: QuizProps) => {
                     key={index}
                     onClick={() => handleAnswerSelect(option)}
                     variant="outline"
-                    className="p-4 text-left justify-start hover:bg-blue-50 hover:border-blue-300 transition-all duration-200"
+                    className="p-3 sm:p-4 text-left justify-start hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 text-sm sm:text-base min-h-[48px] whitespace-normal h-auto"
                   >
                     {option}
                   </Button>
@@ -302,85 +303,85 @@ const Quiz = ({ onClose }: QuizProps) => {
           ) : (
             // Formulário Final
             <div>
-              <h3 className="text-xl font-semibold text-slate-800 mb-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-6">
                 Últimas informações para sua proposta personalizada
               </h3>
 
               <div className="grid gap-4">
                 <div>
-                  <Label htmlFor="name">Nome Completo *</Label>
+                  <Label htmlFor="name" className="text-sm font-medium">Nome Completo *</Label>
                   <Input
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     placeholder="Seu nome completo"
-                    className={`mt-1 ${errors.name ? 'border-red-500' : ''}`}
+                    className={`mt-1 text-sm sm:text-base min-h-[44px] ${errors.name ? 'border-red-500' : ''}`}
                   />
-                  {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                  {errors.name && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.name}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="cpf">CPF/CNPJ *</Label>
+                  <Label htmlFor="cpf" className="text-sm font-medium">CPF/CNPJ *</Label>
                   <Input
                     id="cpf"
                     value={formData.cpf}
                     onChange={(e) => handleInputChange('cpf', e.target.value)}
                     placeholder="000.000.000-00 ou 00.000.000/0000-00"
-                    className={`mt-1 ${errors.cpf ? 'border-red-500' : ''}`}
+                    className={`mt-1 text-sm sm:text-base min-h-[44px] ${errors.cpf ? 'border-red-500' : ''}`}
                   />
-                  {errors.cpf && <p className="text-red-500 text-sm mt-1">{errors.cpf}</p>}
+                  {errors.cpf && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.cpf}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
                   <Input
                     id="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="seu.email@exemplo.com"
-                    className={`mt-1 ${errors.email ? 'border-red-500' : ''}`}
+                    className={`mt-1 text-sm sm:text-base min-h-[44px] ${errors.email ? 'border-red-500' : ''}`}
                   />
-                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                  {errors.email && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="whatsapp">WhatsApp *</Label>
+                  <Label htmlFor="whatsapp" className="text-sm font-medium">WhatsApp *</Label>
                   <Input
                     id="whatsapp"
                     value={formData.whatsapp}
                     onChange={(e) => handleInputChange('whatsapp', e.target.value)}
                     placeholder="(11) 99999-9999"
-                    className={`mt-1 ${errors.whatsapp ? 'border-red-500' : ''}`}
+                    className={`mt-1 text-sm sm:text-base min-h-[44px] ${errors.whatsapp ? 'border-red-500' : ''}`}
                   />
-                  {errors.whatsapp && <p className="text-red-500 text-sm mt-1">{errors.whatsapp}</p>}
+                  {errors.whatsapp && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.whatsapp}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="income">Renda Mensal Aproximada</Label>
+                  <Label htmlFor="income" className="text-sm font-medium">Renda Mensal Aproximada</Label>
                   <Input
                     id="income"
                     value={formData.income}
                     onChange={(e) => handleInputChange('income', e.target.value)}
                     placeholder="R$ 5.000,00"
-                    className="mt-1"
+                    className="mt-1 text-sm sm:text-base min-h-[44px]"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="amount">Valor Pretendido</Label>
+                  <Label htmlFor="amount" className="text-sm font-medium">Valor Pretendido</Label>
                   <Input
                     id="amount"
                     value={formData.amount}
                     onChange={(e) => handleInputChange('amount', e.target.value)}
                     placeholder="R$ 50.000,00"
-                    className="mt-1"
+                    className="mt-1 text-sm sm:text-base min-h-[44px]"
                   />
                 </div>
 
                 <Button
                   onClick={handleSubmit}
-                  className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-3 text-lg font-semibold mt-6"
+                  className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-3 sm:py-4 text-sm sm:text-lg font-semibold mt-6 min-h-[48px]"
                   disabled={!formData.name || !formData.cpf || !formData.email || !formData.whatsapp}
                 >
                   RECEBER MINHA PROPOSTA PERSONALIZADA

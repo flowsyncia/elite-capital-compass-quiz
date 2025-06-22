@@ -50,13 +50,13 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-50 font-poppins">
+    <section className="py-16 sm:py-24 bg-gray-50 font-poppins">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight text-slate-900">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 tracking-tight text-slate-900 px-2">
             O que dizem <span className="text-cyan-600">nossos clientes</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-medium">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-medium px-2">
             Histórias reais de quem já transformou sua vida financeira conosco
           </p>
         </div>
@@ -77,12 +77,12 @@ const TestimonialsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
-            <CarouselNext className="absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
+            <CarouselPrevious className="absolute -left-12 lg:-left-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
+            <CarouselNext className="absolute -right-12 lg:-right-16 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
           </Carousel>
         </div>
 
-        {/* Mobile: 1 column */}
+        {/* Mobile: 1 column with improved navigation */}
         <div className="md:hidden max-w-sm mx-auto relative">
           <Carousel
             opts={{
@@ -93,13 +93,13 @@ const TestimonialsSection = () => {
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index}>
+                <CarouselItem key={index} className="basis-full">
                   <TestimonialCard testimonial={testimonial} />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
-            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg" />
+            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
+            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white shadow-lg z-10" />
           </Carousel>
         </div>
       </div>
@@ -109,26 +109,26 @@ const TestimonialsSection = () => {
 
 const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
   return (
-    <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-100 h-full">
+    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-gray-100 h-full mx-2 sm:mx-0">
       {/* Avatar e nome */}
       <div className="flex items-center mb-6">
-        <Avatar className="w-16 h-16 mr-4">
+        <Avatar className="w-12 h-12 sm:w-16 sm:h-16 mr-3 sm:mr-4 flex-shrink-0">
           <AvatarImage 
             src={testimonial.image} 
             alt={testimonial.name}
             className="object-cover"
           />
-          <AvatarFallback className="bg-cyan-100 text-cyan-700 font-semibold text-lg">
+          <AvatarFallback className="bg-cyan-100 text-cyan-700 font-semibold text-base sm:text-lg">
             {testimonial.name.charAt(0)}
           </AvatarFallback>
         </Avatar>
-        <div>
-          <h3 className="text-xl font-bold text-slate-900 mb-1">
+        <div className="min-w-0 flex-1">
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 truncate">
             {testimonial.name}
           </h3>
           <div className="flex text-yellow-400">
             {[...Array(testimonial.rating)].map((_, i) => (
-              <span key={i} className="text-lg">⭐</span>
+              <span key={i} className="text-base sm:text-lg">⭐</span>
             ))}
           </div>
         </div>
@@ -136,7 +136,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
       
       {/* Depoimento */}
       <div className="mb-4">
-        <p className="text-gray-700 text-lg leading-relaxed italic font-medium">
+        <p className="text-gray-700 text-base sm:text-lg leading-relaxed italic font-medium">
           "{testimonial.quote}"
         </p>
       </div>

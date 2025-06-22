@@ -46,37 +46,37 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col gap-4 sm:gap-6 justify-center mb-16 sm:mb-20 px-4">
+            <div className="flex flex-col gap-3 sm:gap-4 justify-center mb-16 sm:mb-20 px-4 max-w-md sm:max-w-none mx-auto">
               <Button 
                 onClick={onStartQuiz}
-                className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 px-6 sm:px-12 py-4 sm:py-6 text-base sm:text-lg md:text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 min-h-[56px] sm:min-h-[64px]"
+                className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 min-h-[48px] sm:min-h-[56px]"
               >
-                <span className="mr-2">Quero minha análise personalizada</span>
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
+                <span className="leading-tight">Análise Personalizada Gratuita</span>
               </Button>
               
               <Button 
                 onClick={() => setShowWhatsAppModal(true)}
                 variant="outline"
-                className="w-full sm:w-auto border-2 border-cyan-600 bg-transparent text-cyan-600 hover:bg-cyan-600 hover:text-white px-6 sm:px-12 py-4 sm:py-6 text-base sm:text-lg md:text-xl font-bold rounded-xl transition-all duration-300 min-h-[56px] sm:min-h-[64px]"
+                className="w-full sm:w-auto border-2 border-cyan-600 bg-transparent text-cyan-600 hover:bg-cyan-600 hover:text-white px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-lg transition-all duration-300 min-h-[48px] sm:min-h-[56px]"
               >
-                Falar com um especialista agora
+                Falar com Especialista
               </Button>
             </div>
 
             {/* Trust indicators */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto px-4">
               <div className="flex items-center justify-center">
-                <Clock className="w-6 h-6 sm:w-8 sm:h-8 mr-3 sm:mr-4 text-cyan-600 flex-shrink-0" />
-                <span className="font-semibold text-base sm:text-lg text-slate-700">Análise Rápida</span>
+                <Clock className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 text-cyan-600 flex-shrink-0" />
+                <span className="font-semibold text-sm sm:text-base text-slate-700">Análise Rápida</span>
               </div>
               <div className="flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 mr-3 sm:mr-4 text-cyan-600 flex-shrink-0" />
-                <span className="font-semibold text-base sm:text-lg text-slate-700">100% Gratuito</span>
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 text-cyan-600 flex-shrink-0" />
+                <span className="font-semibold text-sm sm:text-base text-slate-700">100% Gratuito</span>
               </div>
               <div className="flex items-center justify-center">
-                <Shield className="w-6 h-6 sm:w-8 sm:h-8 mr-3 sm:mr-4 text-cyan-600 flex-shrink-0" />
-                <span className="font-semibold text-base sm:text-lg text-slate-700">Atendimento Humano</span>
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 text-cyan-600 flex-shrink-0" />
+                <span className="font-semibold text-sm sm:text-base text-slate-700">Atendimento Humano</span>
               </div>
             </div>
           </div>

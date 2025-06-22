@@ -28,7 +28,7 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
               onClick={onStartQuiz}
               className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 px-16 py-6 text-xl md:text-2xl font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
-              FAZER MINHA ANÁLISE PERSONALIZADA
+              LIBERAR MINHA PRÉ-ANÁLISE GRATUITA
             </Button>
             
             <Button 
@@ -36,7 +36,7 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
               variant="outline"
               className="border-2 border-cyan-600 bg-transparent text-cyan-600 hover:bg-cyan-600 hover:text-white px-16 py-6 text-xl md:text-2xl font-bold rounded-lg transition-all duration-300"
             >
-              FALAR AGORA NO WHATSAPP
+              FALAR COM UM ESPECIALISTA AGORA
             </Button>
           </div>
 

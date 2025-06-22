@@ -51,7 +51,7 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
                 onClick={onStartQuiz}
                 className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 px-12 py-6 text-lg md:text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
-                Descobrir Minha Solução Ideal
+                Quero minha análise personalizada
                 <ArrowRight className="ml-2 w-6 h-6" />
               </Button>
               
@@ -60,7 +60,7 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
                 variant="outline"
                 className="border-2 border-cyan-600 bg-transparent text-cyan-600 hover:bg-cyan-600 hover:text-white px-12 py-6 text-lg md:text-xl font-bold rounded-xl transition-all duration-300"
               >
-                Falar Agora no WhatsApp
+                Falar com um especialista agora
               </Button>
             </div>
 

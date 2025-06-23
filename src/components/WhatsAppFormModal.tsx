@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -111,10 +112,10 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 
     try {
       console.log('=== TESTE WEBHOOK ===');
-      console.log('URL:', 'https://n8nwebhook.flowsyncia.online/webhook/dados_quizz');
+      console.log('URL:', 'https://n8neditor.flowsyncia.online/webhook-test/dados_quizz');
       console.log('Dados de teste sendo enviados:', JSON.stringify(testData, null, 2));
       
-      const response = await fetch('https://n8nwebhook.flowsyncia.online/webhook/dados_quizz', {
+      const response = await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

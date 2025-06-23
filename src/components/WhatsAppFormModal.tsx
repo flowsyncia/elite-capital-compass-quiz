@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -90,59 +91,6 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const sendTestWebhook = async () => {
-    const testData = {
-      nome: 'TESTE - João Silva',
-      cpf: '123.456.789-00',
-      email: 'teste@exemplo.com',
-      whatsapp: '(11) 99999-9999',
-      renda_mensal: 'R$ 5.000',
-      valor_pretendido: 'R$ 50.000',
-      objetivo: 'TESTE',
-      faixa_renda: 'TESTE',
-      valor_desejado: 'TESTE',
-      garantia: 'TESTE',
-      urgencia: 'TESTE',
-      preferencia_contato: 'WhatsApp',
-      timestamp: new Date().toISOString(),
-      tipo: 'teste_webhook',
-      fonte: 'site_elite_capital'
-    };
-
-    try {
-      console.log('=== TESTE WEBHOOK ===');
-      console.log('URL:', 'https://n8neditor.flowsyncia.online/webhook-test/dados_quizz');
-      console.log('Dados de teste sendo enviados:', JSON.stringify(testData, null, 2));
-      
-      const response = await fetch('https://n8neditor.flowsyncia.online/webhook-test/dados_quizz', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(testData),
-      });
-      
-      console.log('Status da resposta:', response.status);
-      console.log('Headers da resposta:', Object.fromEntries(response.headers.entries()));
-      
-      const responseText = await response.text();
-      console.log('Corpo da resposta:', responseText);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}, body: ${responseText}`);
-      }
-      
-      console.log('✅ TESTE - Webhook enviado com sucesso');
-      console.log('=== FIM TESTE ===');
-      alert('✅ Teste enviado com sucesso! Verifique o console para mais detalhes.');
-    } catch (error) {
-      console.error('❌ ERRO NO TESTE:', error);
-      console.log('=== FIM TESTE (COM ERRO) ===');
-      alert('❌ Erro no teste! Verifique o console para mais detalhes.');
-    }
-  };
-
   const sendToWebhook = async (data: any) => {
     try {
       console.log('=== WHATSAPP WEBHOOK DEBUG ===');
@@ -230,19 +178,6 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
 
         <form onSubmit={handleSubmit} className="p-6">
           <div className="space-y-4">
-            <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <Button
-                type="button"
-                onClick={sendTestWebhook}
-                className="w-full bg-yellow-500 hover:bg-yellow-600 text-white"
-              >
-                🧪 ENVIAR TESTE DO WEBHOOK
-              </Button>
-              <p className="text-xs text-yellow-700 mt-2 text-center">
-                Clique para testar se o webhook está funcionando
-              </p>
-            </div>
-
             <div>
               <Label htmlFor="name">Nome Completo *</Label>
               <Input

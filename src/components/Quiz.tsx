@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,11 +15,11 @@ const Quiz = ({ onClose }: QuizProps) => {
     name: '',
     cpf: '',
     email: '',
-    whatsapp: '',
-    income: '',
-    amount: ''
+    whatsapp: ''
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [allowConsultation, setAllowConsultation] = useState<boolean | null>(null);
+  const [showThanks, setShowThanks] = useState(false);
 
   const questions = [
     {
@@ -153,8 +152,6 @@ const Quiz = ({ onClose }: QuizProps) => {
       if (numbers.length <= 11) {
         formattedValue = numbers.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3');
       }
-    } else if (field === 'income' || field === 'amount') {
-      formattedValue = formatCurrency(value);
     }
 
     setFormData({ ...formData, [field]: formattedValue });
@@ -222,19 +219,40 @@ const Quiz = ({ onClose }: QuizProps) => {
       return;
     }
 
+    // Show consultation permission question
+    setCurrentStep(questions.length + 1);
+  };
+
+  const handleConsultationResponse = async (response: boolean) => {
+    setAllowConsultation(response);
+
+    if (response) {
+      setShowThanks(true);
+      
+      // Wait 2 seconds then proceed
+      setTimeout(async () => {
+        await proceedWithSubmission();
+      }, 2000);
+    } else {
+      await proceedWithSubmission();
+    }
+  };
+
+  const proceedWithSubmission = async () => {
     const webhookData = {
       nome: formData.name,
       cpf: formData.cpf,
       email: formData.email,
       whatsapp: formData.whatsapp,
-      renda_mensal: formData.income,
-      valor_pretendido: formData.amount,
+      renda_mensal: answers.income || '',
+      valor_pretendido: answers.amount || '',
       objetivo: answers.objective,
       faixa_renda: answers.income,
       valor_desejado: answers.amount,
       garantia: answers.guarantee,
       urgencia: answers.urgency,
       preferencia_contato: answers.contact,
+      permite_consulta_rapida: allowConsultation ? 'Sim' : 'Não',
       timestamp: new Date().toISOString(),
       tipo: 'quiz_completo',
       fonte: 'site_elite_capital'
@@ -267,7 +285,24 @@ const Quiz = ({ onClose }: QuizProps) => {
         </div>
 
         <div className="p-4 sm:p-6">
-          {currentStep < questions.length ? (
+          {showThanks ? (
+            // Mensagem de agradecimento
+            <div className="text-center py-8">
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">
+                  Obrigado!
+                </h3>
+                <p className="text-gray-600">
+                  Agradecemos por permitir que façamos uma consulta rápida. Em breve entraremos em contato com as melhores opções para você.
+                </p>
+              </div>
+            </div>
+          ) : currentStep < questions.length ? (
             // Perguntas do Quiz
             <div>
               <div className="mb-6">
@@ -300,8 +335,8 @@ const Quiz = ({ onClose }: QuizProps) => {
                 ))}
               </div>
             </div>
-          ) : (
-            // Formulário Final
+          ) : currentStep === questions.length ? (
+            // Formulário Final (sem renda mensal e valor pretendido)
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-6">
                 Últimas informações para sua proposta personalizada
@@ -357,34 +392,38 @@ const Quiz = ({ onClose }: QuizProps) => {
                   {errors.whatsapp && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.whatsapp}</p>}
                 </div>
 
-                <div>
-                  <Label htmlFor="income" className="text-sm font-medium">Renda Mensal Aproximada</Label>
-                  <Input
-                    id="income"
-                    value={formData.income}
-                    onChange={(e) => handleInputChange('income', e.target.value)}
-                    placeholder="R$ 5.000,00"
-                    className="mt-1 text-sm sm:text-base min-h-[44px]"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="amount" className="text-sm font-medium">Valor Pretendido</Label>
-                  <Input
-                    id="amount"
-                    value={formData.amount}
-                    onChange={(e) => handleInputChange('amount', e.target.value)}
-                    placeholder="R$ 50.000,00"
-                    className="mt-1 text-sm sm:text-base min-h-[44px]"
-                  />
-                </div>
-
                 <Button
                   onClick={handleSubmit}
                   className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white py-3 sm:py-4 text-sm sm:text-lg font-semibold mt-6 min-h-[48px]"
                   disabled={!formData.name || !formData.cpf || !formData.email || !formData.whatsapp}
                 >
-                  RECEBER MINHA PROPOSTA PERSONALIZADA
+                  CONTINUAR
+                </Button>
+              </div>
+            </div>
+          ) : (
+            // Pergunta sobre consulta rápida
+            <div className="text-center py-8">
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-6">
+                Podemos usar seus dados para uma consulta rápida sem compromisso?
+              </h3>
+              <p className="text-gray-600 mb-8 text-sm sm:text-base">
+                Isso nos permitirá fazer uma análise prévia e oferecer as melhores condições para seu perfil.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  onClick={() => handleConsultationResponse(true)}
+                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white py-3 px-8 text-lg font-semibold"
+                >
+                  SIM, AUTORIZO
+                </Button>
+                <Button
+                  onClick={() => handleConsultationResponse(false)}
+                  variant="outline"
+                  className="py-3 px-8 text-lg font-semibold"
+                >
+                  NÃO, OBRIGADO
                 </Button>
               </div>
             </div>

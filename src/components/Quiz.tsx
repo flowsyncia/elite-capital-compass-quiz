@@ -36,7 +36,7 @@ const Quiz = ({ onClose }: QuizProps) => {
     },
     {
       id: 'income',
-      question: 'Qual sua faixa de renda mensal?',
+      question: 'Renda mensal ou faturamento mensal (em caso de CNPJ)?',
       options: [
         'Até R$ 2.000',
         'R$ 2.001 a R$ 5.000',

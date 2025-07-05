@@ -38,11 +38,11 @@ const Quiz = ({ onClose }: QuizProps) => {
       id: 'income',
       question: 'Renda mensal ou faturamento mensal (em caso de CNPJ)?',
       options: [
-        'Até R$ 2.000',
-        'R$ 2.001 a R$ 5.000',
-        'R$ 5.001 a R$ 10.000',
-        'R$ 10.001 a R$ 20.000',
-        'Acima de R$ 20.000'
+        'Até R$ 5.000',
+        'Até R$ 20.000',
+        'Até R$ 200.000',
+        'Até R$ 1.000.000',
+        'Acima de R$ 1.000.000'
       ]
     },
     {

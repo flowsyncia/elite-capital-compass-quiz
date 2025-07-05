@@ -26,7 +26,7 @@ const HeroSection = ({ onStartQuiz }: HeroSectionProps) => {
               <img 
                 src="/lovable-uploads/bf334ad0-2034-4cab-b691-71558bb72ff5.png" 
                 alt="Elite Capital - Soluções Financeiras" 
-                className="h-16 sm:h-24 md:h-32 mx-auto"
+                className="h-20 sm:h-32 md:h-40 lg:h-48 mx-auto"
               />
             </div>
 

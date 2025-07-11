@@ -67,6 +67,37 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
         </div>
       </div>
 
+      {/* Rodapé com informações legais */}
+      <footer className="bg-slate-50 border-t border-slate-200 py-8 mt-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center text-slate-600 space-y-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-1 text-sm">
+              <span>Copyright 2025 © ELITE CAPITAL ESC LTDA – Todos os direitos reservados.</span>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+              <span>CNPJ: 42.837.586/0001-93</span>
+              <span className="hidden sm:block">•</span>
+              <a 
+                href="https://instagram.com/elitecapitalx" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-cyan-600 hover:text-cyan-700 transition-colors"
+              >
+                Instagram: @elitecapitalx
+              </a>
+              <span className="hidden sm:block">•</span>
+              <a 
+                href="/politica-privacidade"
+                className="text-cyan-600 hover:text-cyan-700 transition-colors"
+              >
+                Política de Privacidade
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
       <WhatsAppFormModal 
         isOpen={showWhatsAppModal}
         onClose={() => setShowWhatsAppModal(false)}

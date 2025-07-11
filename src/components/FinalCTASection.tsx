@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Clock, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import WhatsAppFormModal from './WhatsAppFormModal';
 
 interface FinalCTASectionProps {
@@ -87,12 +88,12 @@ const FinalCTASection = ({ onStartQuiz }: FinalCTASectionProps) => {
                 Instagram: @elitecapitalx
               </a>
               <span className="hidden sm:block">•</span>
-              <a 
-                href="/politica-privacidade"
+              <Link 
+                to="/politica-privacidade"
                 className="text-cyan-600 hover:text-cyan-700 transition-colors"
               >
                 Política de Privacidade
-              </a>
+              </Link>
             </div>
           </div>
         </div>

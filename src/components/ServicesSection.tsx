@@ -12,50 +12,62 @@ const ServicesSection = ({
     {
       icon: Coins,
       title: "Crédito Pessoal",
+      description: "Empréstimo rápido e simples para organizar suas finanças ou realizar projetos pessoais.",
       color: "from-cyan-500 to-cyan-600"
     }, {
       icon: Users,
       title: "Empréstimo Consignado",
+      description: "Crédito com desconto direto na folha, com taxas reduzidas e parcelas que cabem no bolso.",
       color: "from-blue-500 to-blue-600"
     }, {
       icon: Home,
       title: "Financiamento Imobiliário",
+      description: "Crédito para você comprar, construir ou reformar seu imóvel com condições acessíveis.",
       color: "from-teal-500 to-teal-600"
     }, {
       icon: Home,
       title: "Crédito com Garantia de Imóvel",
+      description: "Empréstimo com juros baixos, usando seu imóvel como garantia, ideal para grandes projetos.",
       color: "from-indigo-500 to-indigo-600"
     }, {
       icon: Car,
       title: "Financiamento de Veículos",
+      description: "Facilidade para você adquirir seu carro ou moto, com prazos longos e parcelas acessíveis.",
       color: "from-cyan-500 to-cyan-600"
     }, {
       icon: Car,
       title: "Crédito com Garantia de Veículo",
+      description: "Empréstimo usando seu carro quitado como garantia, com taxas menores e liberação rápida.",
       color: "from-blue-500 to-blue-600"
     }, {
       icon: FileText,
       title: "Antecipação de Recebíveis",
+      description: "Transforme suas vendas a prazo em capital imediato e mantenha o fluxo de caixa saudável.",
       color: "from-teal-500 to-teal-600"
     }, {
       icon: Shield,
       title: "Seguros",
+      description: "Proteja sua vida, patrimônio e negócios com seguros sob medida para suas necessidades.",
       color: "from-cyan-500 to-cyan-600"
     }, {
       icon: Users,
       title: "Consórcio",
+      description: "Adquira bens ou serviços de forma planejada e sem juros, com parcelas que cabem no seu orçamento.",
       color: "from-blue-500 to-blue-600"
     }, {
       icon: Briefcase,
       title: "Mercado Livre de Energia",
+      description: "Reduza seus custos com energia ao migrar para o mercado livre e ganhe mais competitividade.",
       color: "from-teal-500 to-teal-600"
     }, {
       icon: Coins,
       title: "Câmbio",
+      description: "Compra e venda de moedas estrangeiras com agilidade, segurança e taxas competitivas.",
       color: "from-cyan-500 to-cyan-600"
     }, {
       icon: Calendar,
       title: "Previdência Privada",
+      description: "Garanta seu futuro com um plano de previdência que une segurança, rentabilidade e flexibilidade.",
       color: "from-blue-500 to-blue-600"
     }
   ];
@@ -82,7 +94,7 @@ const ServicesSection = ({
                 {service.title}
               </h3>
               <p className="text-slate-600 font-medium">
-                Condições especiais e atendimento personalizado
+                {service.description}
               </p>
             </div>
           ))}

@@ -14,6 +14,7 @@ const Quiz = ({ onClose }: QuizProps) => {
   const [formData, setFormData] = useState({
     name: '',
     cpf: '',
+    cnpj: '',
     email: '',
     whatsapp: ''
   });
@@ -96,8 +97,17 @@ const Quiz = ({ onClose }: QuizProps) => {
 
   const validateCPF = (cpf: string) => {
     const numbers = cpf.replace(/\D/g, '');
-    if (numbers.length !== 11 && numbers.length !== 14) {
-      return 'CPF deve ter 11 dígitos ou CNPJ deve ter 14 dígitos';
+    if (numbers.length !== 11) {
+      return 'CPF deve ter 11 dígitos';
+    }
+    return '';
+  };
+
+  const validateCNPJ = (cnpj: string) => {
+    if (!cnpj) return ''; // CNPJ é opcional
+    const numbers = cnpj.replace(/\D/g, '');
+    if (numbers.length !== 14) {
+      return 'CNPJ deve ter 14 dígitos';
     }
     return '';
   };
@@ -144,7 +154,10 @@ const Quiz = ({ onClose }: QuizProps) => {
       const numbers = value.replace(/\D/g, '');
       if (numbers.length <= 11) {
         formattedValue = numbers.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-      } else {
+      }
+    } else if (field === 'cnpj') {
+      const numbers = value.replace(/\D/g, '');
+      if (numbers.length <= 14) {
         formattedValue = numbers.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
       }
     } else if (field === 'whatsapp') {
@@ -170,6 +183,9 @@ const Quiz = ({ onClose }: QuizProps) => {
     
     const cpfError = validateCPF(formData.cpf);
     if (cpfError) newErrors.cpf = cpfError;
+    
+    const cnpjError = validateCNPJ(formData.cnpj);
+    if (cnpjError) newErrors.cnpj = cnpjError;
     
     const emailError = validateEmail(formData.email);
     if (emailError) newErrors.email = emailError;
@@ -242,6 +258,7 @@ const Quiz = ({ onClose }: QuizProps) => {
     const webhookData = {
       nome: formData.name,
       cpf: formData.cpf,
+      cnpj: formData.cnpj,
       email: formData.email,
       whatsapp: formData.whatsapp,
       renda_mensal: answers.income || '',
@@ -260,7 +277,8 @@ const Quiz = ({ onClose }: QuizProps) => {
 
     await sendToWebhook(webhookData);
 
-    const whatsappMessage = `Olá Pedro! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. Meu CPF/CNPJ é: ${formData.cpf}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
+    const cpfCnpj = formData.cnpj ? `CPF: ${formData.cpf}, CNPJ: ${formData.cnpj}` : `CPF: ${formData.cpf}`;
+    const whatsappMessage = `Olá Pedro! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. ${cpfCnpj}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
 
     const whatsappURL = `https://wa.me/5511940134427?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappURL, '_blank');
@@ -356,15 +374,27 @@ const Quiz = ({ onClose }: QuizProps) => {
                 </div>
 
                 <div>
-                  <Label htmlFor="cpf" className="text-sm font-medium">CPF/CNPJ *</Label>
+                  <Label htmlFor="cpf" className="text-sm font-medium">CPF *</Label>
                   <Input
                     id="cpf"
                     value={formData.cpf}
                     onChange={(e) => handleInputChange('cpf', e.target.value)}
-                    placeholder="000.000.000-00 ou 00.000.000/0000-00"
+                    placeholder="000.000.000-00"
                     className={`mt-1 text-sm sm:text-base min-h-[44px] ${errors.cpf ? 'border-red-500' : ''}`}
                   />
                   {errors.cpf && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.cpf}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="cnpj" className="text-sm font-medium">CNPJ (opcional - se for pela empresa)</Label>
+                  <Input
+                    id="cnpj"
+                    value={formData.cnpj}
+                    onChange={(e) => handleInputChange('cnpj', e.target.value)}
+                    placeholder="00.000.000/0000-00"
+                    className={`mt-1 text-sm sm:text-base min-h-[44px] ${errors.cnpj ? 'border-red-500' : ''}`}
+                  />
+                  {errors.cnpj && <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.cnpj}</p>}
                 </div>
 
                 <div>

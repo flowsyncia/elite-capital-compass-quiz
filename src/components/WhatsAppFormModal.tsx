@@ -169,9 +169,9 @@ const WhatsAppFormModal = ({ isOpen, onClose }: WhatsAppFormModalProps) => {
     await sendToWebhook(webhookData);
 
     const cpfCnpj = formData.cnpj ? `CPF: ${formData.cpf}, CNPJ: ${formData.cnpj}` : `CPF: ${formData.cpf}`;
-    const message = `Olá Pedro! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. ${cpfCnpj}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
-    const whatsappURL = `https://wa.me/5511947978773?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, '_blank');
+    const message = `Olá! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. ${cpfCnpj}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
+    const whatsappURL = `https://api.whatsapp.com/send?phone=5511947978773&text=${encodeURIComponent(message)}`;
+    window.location.href = whatsappURL;
     onClose();
   };
 

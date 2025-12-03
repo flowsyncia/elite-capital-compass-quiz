@@ -245,16 +245,23 @@ const Quiz = ({ onClose }: QuizProps) => {
     if (response) {
       setShowThanks(true);
       
-      // Wait 2 seconds then proceed
-      setTimeout(async () => {
-        await proceedWithSubmission();
-      }, 2000);
+      // Abrir WhatsApp imediatamente (dentro da ação do usuário)
+      proceedWithSubmission();
     } else {
-      await proceedWithSubmission();
+      proceedWithSubmission();
     }
   };
 
-  const proceedWithSubmission = async () => {
+  const proceedWithSubmission = () => {
+    // Construir URL do WhatsApp ANTES de qualquer operação assíncrona
+    const cpfCnpj = formData.cnpj ? `CPF: ${formData.cpf}, CNPJ: ${formData.cnpj}` : `CPF: ${formData.cpf}`;
+    const whatsappMessage = `Olá! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. ${cpfCnpj}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
+    const whatsappURL = `https://wa.me/5511947978773?text=${encodeURIComponent(whatsappMessage)}`;
+
+    // Abrir WhatsApp PRIMEIRO (direto da ação do usuário)
+    window.open(whatsappURL, '_blank');
+
+    // Enviar webhook em background (não bloqueia)
     const webhookData = {
       nome: formData.name,
       cpf: formData.cpf,
@@ -275,12 +282,7 @@ const Quiz = ({ onClose }: QuizProps) => {
       fonte: 'site_elite_capital'
     };
 
-    await sendToWebhook(webhookData);
-
-    const cpfCnpj = formData.cnpj ? `CPF: ${formData.cpf}, CNPJ: ${formData.cnpj}` : `CPF: ${formData.cpf}`;
-    const whatsappMessage = `Olá! Meu nome é ${formData.name} e acabei de preencher meus dados na página da Elite Capital. ${cpfCnpj}. Gostaria de saber mais sobre as opções de crédito disponíveis.`;
-    const whatsappURL = `https://api.whatsapp.com/send?phone=5511947978773&text=${encodeURIComponent(whatsappMessage)}`;
-    window.location.href = whatsappURL;
+    sendToWebhook(webhookData);
     onClose();
   };
 
